@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Kendi Özel Veritabanı Engellemelerim ---
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
