@@ -5,8 +5,13 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                              QHBoxLayout, QPushButton, QLabel, QComboBox, 
                              QScrollArea, QGridLayout, QRadioButton, QButtonGroup, 
                              QMessageBox, QFrame, QStackedWidget, QLineEdit, QTextBrowser)
+#QScrollArea,İçeriğin ekrana sığmadığı durumda yatay ya da dikey kaydırma çubuğu ekler,içeriğin kaymasını sağlar.
+#QFrame,Etrafına kenarlık eklenebilen çerçevelerdir.Arayüzdeki belli bölümleri ayırmada kullanılır.
+#QStackedWidget,İçine birden fazla sayfa/widget eklenebilen fakat aynı anda sadece birini göstermeyi sağlayan araçtır.
+
 from PyQt5.QtCore import Qt, QTimer # Qt temel özellikleri (hizalama vb.) ve Zamanlayıcı (robot süresi için)
 from PyQt5.QtGui import QFont, QPixmap, QPainter # Yazı tipi, görsel işleme ve çizim (arka plan) işlemleri için
+#QPixmap,Bilgisayardaki resim ve ikon dosyalarını hafızaya yükleyip ekranda göstermeyi sağlar.
 
 # --- 1. ÖZEL ARKA PLAN SINIFI ---
 # Bu sınıf, ürünlerin listelendiği sayfalarda arka plana kategori resmini silik (transparan) olarak eklemek için yazıldı.
@@ -23,6 +28,7 @@ class FaintBackgroundWidget(QWidget):
             painter.setOpacity(0.12)  # Görselin opaklığını %12'ye düşürüyoruz (silik görünmesi için)
             # Görseli en-boy oranını bozmadan ekrana sığacak şekilde yeniden boyutlandırıyoruz
             scaled = self.bg_pixmap.scaled(self.size(), Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
+          #scaled,Görseli pencere boyutuna göre yeniden boyutlandırır.Qt.KeepAspectRatioByExpanding,resmin en boy oranının bozulmadan tam alan kaplamasını sağlar.
               # Resmi tam ekranın ortasına hizalamak için x ve y koordinatlarını hesaplıyoruz
             x = (self.width() - scaled.width()) // 2
             y = (self.height() - scaled.height()) // 2
